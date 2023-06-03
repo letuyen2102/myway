@@ -10,13 +10,17 @@ const bookingRouter = require('./routes/bookingRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
 const chatRouter = require('./routes/chatRoutes')
 const app = express()
-
-app.use(cors({
-    origin : 'https://myway-shop-app-ov4n.onrender.com/',
-    credentials : true
-}))
 app.use(express.static('public/image'));
-
+app.use(
+    cors({
+      origin: [
+        "https://myway-shop-app-ov4n.onrender.com",
+        "http://localhost:3000",
+        "http://localhost:5000",
+        "https://myway-shop-app-api-dr39.onrender.com"
+      ]
+    })
+  );
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
